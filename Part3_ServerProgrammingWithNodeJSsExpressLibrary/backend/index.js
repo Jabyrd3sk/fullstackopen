@@ -383,7 +383,7 @@ let notes = [
   },
   {
     id: '2',
-    content: 'Browser can execute only JavaScript',
+    content: 'Brows er can execute only JavaScript',
     important: false,
   },
   {
