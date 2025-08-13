@@ -1,7 +1,7 @@
 # Node / React
 node_modules/
-build/
-dist/
+# build/
+# dist/
 
 # Environment variables
 .env
