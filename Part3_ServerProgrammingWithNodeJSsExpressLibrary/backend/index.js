@@ -26,9 +26,6 @@
 // app.listen(PORT)
 // console.log(`Server running on port ${PORT}`)
 
-
-
-
 // Web and Express
 // const express = require('express')
 // const app = express()
@@ -64,10 +61,6 @@
 //     console.log(`Server running on port ${PORT}`)
 // })
 
-
-
-
-
 // Fetching a single resource
 // const express = require('express')
 // const app = express()
@@ -97,7 +90,7 @@
 // app.get('/api/notes/:id', (request, response) => {
 //     const id = request.params.id
 //     const note = notes.find(note => note.id === id)
-    
+
 //     if (note) {
 //         response.json(note)
 //     } else {
@@ -109,11 +102,6 @@
 // app.listen(PORT, () => {
 //     console.log(`Server running on port ${PORT}`)
 // })
-
-
-
-
-
 
 // Deleting resources
 // const express = require('express')
@@ -145,7 +133,6 @@
 //   response.json(notes)
 // })
 
-
 // app.get('/api/notes/:id', (request, response) => {
 //   const id = request.params.id
 //   const note = notes.find(note => note.id === id)
@@ -168,10 +155,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server running on port ${PORT}`)
 // })
-
-
-
-
 
 // Receiving data
 // const express = require('express')
@@ -205,7 +188,6 @@
 //   response.json(notes)
 // })
 
-
 // app.get('/api/notes/:id', (request, response) => {
 //   const id = request.params.id
 //   const note = notes.find(note => note.id === id)
@@ -233,7 +215,7 @@
 
 // app.post('/api/notes', (request, response) => {
 //     const body = request.body
-    
+
 //     if (!body.concat) {
 //         return response.status(400).json({
 //             error: 'concat missing'
@@ -254,12 +236,6 @@
 // app.listen(PORT, () => {
 //   console.log(`Server running on port ${PORT}`)
 // })
-
-
-
-
-
-
 
 // Middleware
 // const express = require('express')
@@ -356,16 +332,10 @@
 
 // app.use(unknownEndpoint)
 
-
 // const PORT = 3001
 // app.listen(PORT, () => {
 //   console.log(`Server running on port ${PORT}`)
 // })
-
-
-
-
-
 
 // Part3c Saving data to mongodb
 // Application to the internet
@@ -404,7 +374,6 @@
 // app.use(express.json())
 // app.use(requestLogger)
 
-
 // app.get('/', (request, response) => {
 //   response.send('<h1>Hello World!</h1>')
 // })
@@ -427,9 +396,9 @@
 // // const path = require('path')
 // // app.use(express.static(path.join(__dirname, 'dist')))
 
-// const generateId = () => {  
-//   const maxId = notes.length > 0 
-//     ? Math.max(...notes.map((n) => Number(n.id))) 
+// const generateId = () => {
+//   const maxId = notes.length > 0
+//     ? Math.max(...notes.map((n) => Number(n.id)))
 //     : 0
 //   return String(maxId + 1)
 // }
@@ -451,7 +420,6 @@
 
 //   console.log('Created note (server):', note);
 //   notes = notes.concat(note)
-  
 
 //   response.json(note)
 // })
@@ -476,10 +444,6 @@
 
 // //console.log('RUNNING FILE:', __filename)
 // //console.log('CWD:', process.cwd())
-
-
-
-
 
 // Connecting the backend to a database
 // const express = require('express')
@@ -537,7 +501,6 @@
 // app.use(express.json())
 // app.use(requestLogger)
 
-
 // app.get('/', (request, response) => {
 //   response.send('<h1>Hello World!</h1>')
 // })
@@ -559,9 +522,9 @@
 //   }
 // })
 
-// const generateId = () => {  
-//   const maxId = notes.length > 0 
-//     ? Math.max(...notes.map((n) => Number(n.id))) 
+// const generateId = () => {
+//   const maxId = notes.length > 0
+//     ? Math.max(...notes.map((n) => Number(n.id)))
 //     : 0
 //   return String(maxId + 1)
 // }
@@ -583,7 +546,6 @@
 
 //   console.log('Created note (server):', note);
 //   notes = notes.concat(note)
-  
 
 //   response.json(note)
 // })
@@ -608,13 +570,6 @@
 
 // //console.log('RUNNING FILE:', __filename)
 // //console.log('CWD:', process.cwd())
-
-
-
-
-
-
-
 
 // Defining environment variables using a dot env library
 // console.log('MONGODB_URI:', process.env.MONGODB_URI);
@@ -703,11 +658,6 @@
 // //console.log('RUNNING FILE:', __filename)
 // //console.log('CWD:', process.cwd())
 
-
-
-
-
-
 // Error handling
 // console.log('MONGODB_URI:', process.env.MONGODB_URI);
 // require('dotenv').config()
@@ -777,7 +727,7 @@
 //       if (!note) {
 //         return response.status(404).end()
 //       }
-      
+
 //       note.content = content
 //       note.important = important
 
@@ -820,14 +770,9 @@
 // //console.log('RUNNING FILE:', __filename)
 // //console.log('CWD:', process.cwd())
 
-
-
-
-
-
 // Part3d Validation and Eslint
 require('dotenv').config()
-console.log('MONGODB_URI:', process.env.MONGODB_URI);
+console.log('MONGODB_URI:', process.env.MONGODB_URI)
 const express = require('express')
 const Note = require('./models/note')
 
@@ -878,11 +823,10 @@ app.get('/api/notes/:id', (request, response, next) => {
     .catch((error) => next(error))
 })
 
-
 app.post('/api/notes', (request, response, next) => {
   const body = request.body
   if (!body || !body.content) {
-    return response.status(400).json({error:'content missing'})
+    return response.status(400).json({ error: 'content missing' })
   }
 
   const note = new Note({
@@ -919,7 +863,7 @@ app.put('/api/notes/:id', (request, response, next) => {
 
 app.delete('/api/notes/:id', (request, response, next) => {
   Note.findByIdAndDelete(request.params.id)
-    .then(() => {
+    .then(result => {
       response.status(204).end()
     })
     .catch((error) => next(error))
@@ -939,4 +883,3 @@ app.listen(PORT, () => {
 
 //console.log('RUNNING FILE:', __filename)
 //console.log('CWD:', process.cwd())
-

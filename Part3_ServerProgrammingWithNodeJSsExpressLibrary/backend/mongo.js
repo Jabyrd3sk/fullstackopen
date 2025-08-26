@@ -48,7 +48,7 @@ const password = process.argv[2]
 
 const url = `mongodb+srv://fullstack:${password}@cluster0.omumivi.mongodb.net/noteApp?retryWrites=true&w=majority&appName=Cluster0`
 
-mongoose.set('strictQuery',false)
+mongoose.set('strictQuery', false)
 
 mongoose.connect(url)
 
@@ -60,8 +60,8 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema)
 
 // prints all the notes stored in the database
-Note.find({}).then(result => {
-  result.forEach(note => {
+Note.find({}).then((result) => {
+  result.forEach((note) => {
     console.log(note)
   })
   mongoose.connection.close()
@@ -74,7 +74,5 @@ Note.find({}).then(result => {
 //   })
 //   mongoose.connection.close()
 // })
-
-
 
 // (node mongo.js Mongodb99) ---[cmd to run mongodb]
