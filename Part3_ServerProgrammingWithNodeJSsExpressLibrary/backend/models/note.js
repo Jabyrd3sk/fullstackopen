@@ -44,9 +44,13 @@ const noteSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 5
   },
   important: Boolean,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 noteSchema.set('toJSON', {
@@ -54,7 +58,7 @@ noteSchema.set('toJSON', {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
-  },
+  }
 })
 
 module.exports = mongoose.model('Note', noteSchema)
