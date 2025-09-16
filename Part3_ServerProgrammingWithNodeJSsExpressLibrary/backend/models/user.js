@@ -1,6 +1,5 @@
 // Part 4c: User administration
 
-// Mongoose schema for users
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
