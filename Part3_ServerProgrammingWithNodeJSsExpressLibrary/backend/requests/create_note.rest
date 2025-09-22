@@ -1,8 +1,10 @@
 POST http://localhost:3001/api/notes 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Iko0YnlyIiwiaWQiOiI2OGJkNjI2ZjFhMDBkMjMwNzMzNGNlZGYiLCJpYXQiOjE3NTc1ODk1ODd9.Kw_MPzUJgus4yKBpV1e9z4-HHwSeCq4pBv-2tjhQPyM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphYnlyIiwiaWQiOiI2OGNiY2E2ZjlmNzk3ZWRkNzgyYjE1ZGUiLCJpYXQiOjE3NTgxODYxNTIsImV4cCI6MTc1ODE4OTc1Mn0.Gvy0E4JKT38T2VkhMpNoSRR_7NcUREZj2pLm0SR0nnw
 
 {
-    "content":"Single page apps use token based auth",
-    "important":false
+    "content": "Single page apps use token based auth",
+    "important": false
 }
+
+
