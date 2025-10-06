@@ -12,14 +12,29 @@ const LoginForm = ({
 
             <form onSubmit={handleSubmit}>
                 <div>
+                    <label>
                     username
-                    <input value={username} onChange={handleUsernameChange} autoComplete="username" />
+                    <input 
+                        value={username} 
+                        onChange={handleUsernameChange} 
+                        autoComplete="username" 
+                    />
+                    </label>
                 </div>
                 <div>
+                    <label>
                     password
-                    <input type='password' value={password} onChange={handlePasswordChange} autoComplete="current-password" />
+                    <input 
+                        type='password' 
+                        value={password} 
+                        onChange={handlePasswordChange} 
+                        autoComplete="current-password" 
+                    />
+                    </label>
                 </div>
-                <button type="submit">login</button>
+                <button id='login-button' type="submit">
+                    login
+                </button>
             </form>
         </div>
     )
