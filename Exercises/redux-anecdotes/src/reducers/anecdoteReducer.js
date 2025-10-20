@@ -2,27 +2,49 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const anecdoteSlice = createSlice({
   name: 'anecdotes',
-  initialState: [
-    { content: 'If it hurts, do it more often', votes: 3, id: '1'},
-    { content: 'Adding manpower to a late software project makes it later!', votes: 1, id: '2'},
-    { content: 'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.', votes: 0, id: '3'},
-    { content: 'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.', votes: 4, id: '4'},
-    { content: 'Premature optimization is the root of all evil', votes: 1, id: '5'},
-    { content: 'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.', votes: 2, id: '6'},    
-  ],
+  initialState: [],
   reducers: {
-    voteAnecdote(state, action) {
-      const id = action.payload
-      const anecdotesToChange = state.find(a => a.id === id)
-      anecdotesToChange.votes += 1
-    },
-    
     createAnecdote(state, action) {
       state.push(action.payload)
+    },
+    voteAnecdote(state, action) {
+      const id = action.payload
+      const anecdoteToChange = state.find(a => a.id === id)
+      const changedAnecdote = {
+        ...anecdoteToChange,
+        votes: anecdoteToChange.votes + 1
+      }
+      return state.map(a => a.id !== id ? a : changedAnecdote)
+    },
+    setAnecdotes(state, action) {
+      return action.payload
     },
   },
 })
 
+export const { createAnecdote, voteAnecdote, setAnecdotes } = anecdoteSlice.actions
 
-export const { voteAnecdote, createAnecdote } = anecdoteSlice.actions
+// 6.14 — fetch anecdotes
+export const initializeAnecdotes = () => {
+  return async dispatch => {
+    const response = await fetch('http://localhost:3000/anecdotes')
+    const anecdotes = await response.json()
+    dispatch(setAnecdotes(anecdotes))
+  }
+}
+
+// 6.15 — create anecdote in backend
+export const addAnecdote = (content) => {
+  return async dispatch => {
+    const newAnecdote = { content, votes: 0 }
+    const response = await fetch('http://localhost:3000/anecdotes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newAnecdote)
+    })
+    const data = await response.json()
+    dispatch(createAnecdote(data))
+  }
+}
+
 export default anecdoteSlice.reducer
